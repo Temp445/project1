@@ -139,7 +139,7 @@ const ProductDetails = () => {
         )}
  
 
-    <div className="container mx-auto p-6 overflow-hidden">
+    <div className="container mx-auto  p-2 sm:p-6 overflow-hidden">
        
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -193,7 +193,7 @@ const ProductDetails = () => {
               : "No description available."}
           </motion.div>
 
-          <div className="flex gap-5 md:mt-10 py-5 px-3">
+          <div className="flex gap-5 md:mt-10 py-5 ">
 
         {product.productLink ? (
   <button
@@ -215,7 +215,7 @@ const ProductDetails = () => {
 
         {/* Image */}
         <motion.div
-          className="w-80 h-60 mb-10 md:h-auto md:w-96 md:ml-5 md:-mt-10 lg:-mt-0 flex justify-center order-1 md:order-2 shadow-lg rounded-lg overflow-hidden shadow-blue-400"
+          className="w-full h-60 mb-10 md:h-auto md:w-96 md:ml-5 md:-mt-10 lg:-mt-0 flex justify-center order-1 md:order-2 shadow-lg rounded-lg overflow-hidden shadow-blue-400"
           initial={{ opacity: 0, x: 50, rotate: -3 }}
           animate={{ opacity: 1, x: 0, rotate: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
@@ -334,7 +334,7 @@ const ProductDetails = () => {
           transition={{ duration: 0.6 }}
         >
           Who Needs{" "}
-          <span className="text-blue-600">
+          <span className="text-blue-600 mr-1">
             {product.productName || "This Product"}
           </span>
           ?
@@ -408,7 +408,7 @@ const ProductDetails = () => {
         {productImages.map((img, index) => (
           <motion.div
             key={index}
-            className="w-72 h-52 md:w-80 md:h-56 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-transform duration-300 ease-in-out transform hover:scale-105 relative group z-20"
+            className="w-full h-52 md:w-80 md:h-56 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-transform duration-300 ease-in-out transform hover:scale-105 relative group z-20"
             variants={fadeIn}
             whileHover={{
               y: -8,
