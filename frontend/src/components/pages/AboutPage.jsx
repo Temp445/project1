@@ -65,7 +65,7 @@ const AboutPage = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="relative h-80 md:h-100 lg:h-130 xl:h-150 w-full overflow-hidden z-10"
+        className="relative h-80 md:h-100 lg:h-130 xl:h-150 w-full overflow-hidden z-10 2xl:rounded-sm"
       >
         <video
           src={People_Business}
@@ -74,7 +74,7 @@ const AboutPage = () => {
           loop
           muted
           playsinline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover "
         ></video>
 
         <motion.div 
