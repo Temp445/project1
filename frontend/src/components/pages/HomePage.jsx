@@ -25,9 +25,11 @@ const HomePage = () => {
 
               <video
                 className="h-50 w-60  mx-auto flex overflow-hidden object justify-center items-center sm:hidden "
+                preload="auto"
                 autoPlay
                 loop
                 muted
+                playsinline
               >
                 <source src={Animation2} type="video/mp4" />
               </video>
@@ -48,9 +50,11 @@ const HomePage = () => {
             <div className="flex justify-center md:ml-20  md:w-80 lg:w-110 xl:w-120 xl:h-120 xl:ml-30  ">
               <video
                 className="hidden sm:block lg:w-100  xl:w-130 xl:-mt-15 pb-10 "
+                preload="auto"
                 autoPlay
                 loop
                 muted
+                playsinline
               >
                 <source src={Animation2} type="video/mp4" />
               </video>
@@ -64,9 +68,11 @@ const HomePage = () => {
         <div className="grid md:grid-cols-2  items-center container gap-10 ">
           <video
             className="hidden   sm:block h-80 w-100  lg:mt-10 lg:w-200 "
+            preload="auto"
             autoPlay
             loop
             muted
+            playsinline
           >
             <source src={Aboutmp4} type="video/mp4" />
           </video>
@@ -76,9 +82,11 @@ const HomePage = () => {
             </h2>
             <video
               className="w-50 h-50 flex items-center justify-center sm:hidden  mx-auto"
+              preload="auto"
               autoPlay
               loop
               muted
+              playsinline
             >
               <source src={Aboutmp4} type="video/mp4" />
             </video>

@@ -69,9 +69,11 @@ const AboutPage = () => {
       >
         <video
           src={People_Business}
+          preload="auto"
           autoPlay
           loop
           muted
+          playsinline
           className="absolute inset-0 w-full h-full object-cover"
         ></video>
 
