@@ -356,7 +356,7 @@ const ProductDetails = () => {
                 .map((sentence, index) => (
                   <motion.div
                     key={index}
-                    className="flex gap-3 w-full py-2 text-[14px] md:text-[16px]"
+                    className="flex gap-3 w-full text-left py-2 text-[14px] md:text-[16px]"
                     variants={fadeIn}
                     whileHover={{ x: 5, transition: { duration: 0.2 } }}
                   >
