@@ -60,37 +60,9 @@ const AboutPage1 = () => {
   return (
     <div className="container w-full mx-auto">
       <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="relative h-80 md:h-100 lg:h-130 xl:h-150 w-full overflow-hidden z-10 rounded-2xl"
-      >
-        <video
-          src={People_Business}
-          autoPlay
-          loop
-          muted
-          className="absolute inset-0 w-full h-full object-cover"
-        ></video>
-
-        <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          className="relative z-10 flex flex-col items-center  justify-center h-full text-white px-6 text-center xl:text-start xl:items-start xl:ml-100 xl:justify-start xl:mt-30"
-        >
-          <h1 className="text-lg md:text-3xl font-semibold relative inline-block mb-4 overflow-hidden after:content-[''] after:block after:w-16 xl:after:w-29 after:h-[2px] after:bg-white after:rounded after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0">
-            About Us
-            <span className="block w-16 h-0.5 bg-[#F7666F] absolute left-1/2 -translate-x-1/2 bottom-[-6px]"></span>
-          </h1>
-
-          <p className="text-sm md:text-base max-w-2xl leading-relaxed w-70 xl:w-170 xl:text-2xl xl:mt-10">
-            <span className="">ACE Software Solutions Pvt. Ltd;</span> a
-            company incorporated in 2001, has its Head Office and its Research &
-            Development center in Chennai. The company was started by
-            professionals having rich experience in the Manufacturing sector.
-          </p>
-        </motion.div>
+        className=" w-full mx-auto justify-center text-blue items-center text-center text-3xl overflow-hidden z-10 rounded-2xl font-extrabold underline underline-offset-4" >
+       About Us
+       
       </motion.div>
 
       <motion.div 
@@ -98,8 +70,14 @@ const AboutPage1 = () => {
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="flex-wrap mt-10 text-justify sm:text-center justify-center px-5 lg:px-20 2xl:px-40 h-auto py-5 xl:mt-20"
+        className="flex-wrap mt-10 text-justify sm:text-center justify-center px-5 lg:px-20 2xl:px-40 h-auto py-5 xl:mt-10"
       >
+
+<motion.p variants={itemVariants} className="py-2 text-[12px] sm:text-[16px] lg:text-lg">
+     <span className="text-blue-500">ACE Software Solutions Pvt. Ltd;</span> a company incorporated in 2001, has its Head Office and its Research &
+            Development center in Chennai. The company was started by
+            professionals having rich experience in the Manufacturing sector.{" "}
+        </motion.p>
         <motion.p variants={itemVariants} className="py-2 text-[12px] sm:text-[16px] lg:text-lg">
           The ASSPL Management Team has hands on experience in designing and
           implementation of{" "}
@@ -135,7 +113,7 @@ const AboutPage1 = () => {
         </motion.p>
       </motion.div>
 
-      {/* <motion.div 
+       <motion.div 
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -165,7 +143,7 @@ const AboutPage1 = () => {
             <p className="mt-2 text-gray-600 text-[12px] sm:text-sm">{item.description}</p>
           </motion.div>
         ))}
-      </motion.div> */}
+      </motion.div> 
 
       <div className="mt-10">
         <Count1/>
@@ -227,7 +205,7 @@ const AboutPage1 = () => {
         </motion.div>
       </motion.div>
 
-      <div className="bg-gray-100 mt-20 h-auto pb-16">
+      <div className="bg-gray-100 mt-20 h-auto pb-16 rounded-xl">
   <h1 className="flex w-full justify-center py-5 font-bold text-[20px] lg:text-[24px] text-gray-800 mt-10">
   Our Leadership Team
   </h1>

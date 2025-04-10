@@ -9,7 +9,7 @@ const Count = () => {
 
   return (
     <div ref={ref}>
-    <div className="mt-2 flex justify-evenly text-center gap-8 lg:mt-0 bg-[#FFF5F5] py-8  mx-auto px-5 ">
+    <div className="mt-2 flex justify-evenly text-center gap-8 lg:mt-0 bg-[#FFF5F5] py-8  rounded-lg mx-auto px-5 ">
     <div>
       <p className="text-xl font-bold lg:text-5xl text-gray-800 overflow-hidden">
       {inView && <CountUp key={inView} start={0} end={300} duration={5} />}+

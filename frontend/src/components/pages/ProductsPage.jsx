@@ -62,7 +62,7 @@ const ProductsPage = () => {
     }
   };
 
-  // Navigate with state to hide Buy Now button
+  // Navigate with state
   const goToProduct = (productId) => {
     navigate(`/product/${productId}`, { state: { fromProductsPage: true } });
   };
@@ -70,8 +70,8 @@ const ProductsPage = () => {
   return (
    <div>
     <Header/>
-     <div className="min-h-screen h-full container w-full mx-auto">
-      <div className="w-full h-50 bg-[#FFF5F5] flex flex-col items-center justify-center text-center p-6 mb-3">
+     <div className="min-h-screen h-full 2xl:container w-full mx-auto">
+      <div className="w-full h-50 bg-[#FFF5F5] flex flex-col items-center justify-center text-center p-6 mb-3 2xl:rounded-5">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">
           Our Products
         </h1>
@@ -80,7 +80,7 @@ const ProductsPage = () => {
         </p>
       </div>
 
-      <div className="container mx-auto flex flex-col md:flex-row mb-20 ml-2">
+      <div className="container mx-auto flex flex-col md:flex-row mb-20 sm:ml-2">
         <div className="hidden md:block lg:w-1/4 xl:w-1/5 border border-gray-200 p-4 rounded-lg backdrop-blur-lg shadow-lg">
           <h2 className="text-lg font-bold mb-3">Categories</h2>
           <ul>
@@ -116,7 +116,7 @@ const ProductsPage = () => {
         </div>
 
         {/* Product Listing */}
-        <div className="w-full md:w-3/4 p-4 ml-10">
+        <div className="w-full md:w-3/4 p-4 sm:ml-10">
           {error && <div className="text-red-500 text-center my-6">{error}</div>}
 
           {loading ? (

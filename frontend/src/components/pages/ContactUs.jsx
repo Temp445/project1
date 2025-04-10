@@ -32,10 +32,10 @@ const ContactUs = () => {
 
     emailjs
       .sendForm(
-        "service_yscbz1z", // Replace with your EmailJS service ID
-        "template_civ87mf", // Replace with your EmailJS template ID
+        "service_yscbz1z", // service ID
+        "template_civ87mf", // template ID
         formCurrent,
-        "9dR2KnJDZ6eO4NSee" // Replace with your EmailJS public key
+        "9dR2KnJDZ6eO4NSee" // public key
       )
       .then(
         (response) => {
@@ -167,7 +167,7 @@ const ContactUs = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-[#F7666F] text-white px-4 py-2 rounded hover:bg-orange-600"
+                className="bg-[#F7666F] text-white px-4 py-2 rounded hover:bg-green-500"
               >
                 {loading ? "Submitting..." : "Submit"}
               </button>

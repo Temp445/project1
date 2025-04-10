@@ -267,8 +267,6 @@ const ProductEdit = () => {
           </div>
         </div>
  
-  
- 
         {/* customerTestimonials */}
         <h3 className="text-[16px] mt-4">Customer Testimonials</h3>
         {productData.customerTestimonials.map((testimonial, index) => (

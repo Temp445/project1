@@ -16,7 +16,6 @@ import Pic2 from "../../assets/Images/Rajasekaran.jpg";
 import Pic3 from "../../assets/Images/ABILASH1.png";
 import Pic4 from "../../assets/Images/Abishek.png";
 import Pic5 from "../../assets/Images/Anandh.jpg";
-
 import { FaUserTie } from "react-icons/fa6";
 
 import Count from "../layouts/Count";
@@ -61,7 +60,7 @@ const AboutPage = () => {
     
     <div>
       <Header/>
-       <div className="container w-full mx-auto">
+       <div className="2xl:container w-full mx-auto">
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -80,14 +79,14 @@ const AboutPage = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
-          className="relative z-10 flex flex-col items-center justify-center h-full text-white px-6 text-center xl:text-start xl:items-start xl:ml-100 xl:justify-start xl:mt-30"
+          className="relative z-10 flex flex-col items-center justify-center h-full text-white px-6 text-center xl:text-start xl:items-start xl:ml-100 xl:justify-start xl:mt-30 "
         >
           <h1 className="text-lg md:text-3xl font-semibold relative inline-block mb-4 overflow-hidden after:content-[''] after:block after:w-16 xl:after:w-29 after:h-[2px] after:bg-white after:rounded after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0">
             About Us
             <span className="block w-16 h-0.5 bg-[#F7666F] absolute left-1/2 -translate-x-1/2 bottom-[-6px]"></span>
           </h1>
 
-          <p className="text-sm md:text-base max-w-2xl leading-relaxed w-70 xl:w-170 xl:text-2xl xl:mt-10">
+          <p className="text-sm md:text-base max-w-4xl leading-relaxed w-70 md:w-full xl:w-170 xl:text-2xl xl:mt-10">
             <span className="">ACE Software Solutions Pvt. Ltd;</span> a
             company incorporated in 2001, has its Head Office and its Research &
             Development center in Chennai. The company was started by
@@ -230,7 +229,7 @@ const AboutPage = () => {
         </motion.div>
       </motion.div>
 
-      <div className="bg-gray-100 mt-20 h-auto pb-16 px-10 sm:px-0">
+      <div className="bg-gray-100 mt-20 h-auto pb-16 px-10 sm:px-0 4xl:rounded-2xl">
   <h1 className="flex w-full justify-center py-5 font-bold text-[20px] lg:text-[24px] text-gray-800 mt-10">
   Our Leadership Team
   </h1>
