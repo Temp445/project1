@@ -46,30 +46,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {/* <DisclosurePanel className="lg:hidden absolute bg-white w-full z-50">
-        <div className="space-y-1 px-4 pt-2 pb-3 flex-col flex items-start">
-          {navigation.map((item) => (
-            
-            <DisclosureButton>
-            <Link
-              key={item.name}
-              to={item.href}
-              className={classNames(
-                item.current
-                  ? 'bg-gray-900 text-white'
-                  : 'text-gray-700 hover:bg-gray-800 hover:text-white',
-                'block rounded-md px-3 py-2 text-base text-[13px]'
-              )}
-            >
-                <span>{item.name}</span>
- 
-            </Link>
-          </DisclosureButton>
-          
-          ))}
-        </div>
-      </DisclosurePanel> */}
+
     </Disclosure>
    </div>
   )

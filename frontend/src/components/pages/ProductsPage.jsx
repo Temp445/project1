@@ -14,6 +14,8 @@ const ProductsPage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const customOrder = ['Sales', 'Engineering', 'Finance', 'Human Resource', 'Project Management','Enterprise (ERP Solutions)'];
+
 
   useEffect(() => {
     fetchProducts();
@@ -84,16 +86,19 @@ const ProductsPage = () => {
         <div className="hidden md:block lg:w-1/4 xl:w-1/5 border border-gray-200 p-4 rounded-lg backdrop-blur-lg shadow-lg">
           <h2 className="text-lg font-bold mb-3">Categories</h2>
           <ul>
-            {categories.sort().map((category, index) => (
-              <li
-                key={index}
-                onClick={() => handleCategoryChange(category)}
-                className={`cursor-pointer py-2 px-3 rounded-lg mb-2 ${
-                  selectedCategory === category
-                    ? "bg-[#becdd750] border border-gray-100"
-                    : "hover:bg-[#e8ebed50]"
-                }`}
-              >
+
+{[...categories]
+  .sort((a, b) => customOrder.indexOf(a) - customOrder.indexOf(b))
+  .map((category, index) => (
+    <li
+      key={index}
+      onClick={() => handleCategoryChange(category)}
+      className={`cursor-pointer py-2 px-3 rounded-lg mb-2 ${
+        selectedCategory === category
+          ? "bg-[#becdd750] border border-gray-100"
+          : "hover:bg-[#e8ebed50]"
+      }`}
+    >
                 {category}
               </li>
             ))}
@@ -149,6 +154,7 @@ const ProductsPage = () => {
                       {product.description &&
                         product.description.split(".")[0]}
                     </p>
+                    <div onClick={() => goToProduct(product._id)}>
                     <div className="flex justify-between mt-4">
                       <Link
                         to={`/product/${product._id}`}
@@ -159,6 +165,7 @@ const ProductsPage = () => {
                           <FaArrowAltCircleRight />
                         </span>
                       </Link>
+                    </div>
                     </div>
                   </div>
                 </div>

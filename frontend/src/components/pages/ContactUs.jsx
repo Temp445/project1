@@ -188,7 +188,7 @@ const ContactUs = () => {
             </p>
             <p className="text-gray-700 mt-2 flex gap-2 hover:scale-105 transition text-[14px]">
               <MdOutlineSendToMobile  className="mt-1" />
-              +91 97109 46806
+              +91 9840137210
             </p>
             <p className="text-gray-700 mt-2 flex gap-2 hover:scale-105 transition text-[14px]">
               <MdOutlineMail className="mt-1" />

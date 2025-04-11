@@ -64,8 +64,8 @@ const HomePage = () => {
       </section>
 
       {/* AboutSection*/}
-      <div className="bg-white p-8 lg:h-120">
-        <div className="grid md:grid-cols-2  items-center container gap-10 ">
+      <div className="bg-white p-8 xl:pe-20 lg:h-120">
+        <div className="grid md:grid-cols-2  items-center container gap-10 xl:gap-0">
           <video
             className="hidden   sm:block h-80 w-100  lg:mt-10 lg:w-200 "
             preload="auto"
@@ -90,7 +90,7 @@ const HomePage = () => {
             >
               <source src={Aboutmp4} type="video/mp4" />
             </video>
-            <p className="mt-0 text w-full  text-[12px] text-wrap text-justify lg:text-sm  xl:leading-7 xl:w-160 xl:text-[18px] xl:text-gray-600 ">
+            <p className="mt-0 text w-full  text-[12px] text-wrap text-justify lg:text-sm  xl:leading-7  xl:text-[18px] xl:text-gray-600 ">
               <span className=" text-[#F7666F]">
                 ACE Software Solutions Pvt. Ltd;
               </span>{" "}
@@ -177,7 +177,7 @@ const HomePage = () => {
 
         {/* PMS */}
         <div className="container flex justify-center items-center  lg:px-5 px-6 mt-0 h-120 sm:h-auto">
-          <div className="bg-white shadow-lg rounded-xl  md:shadow-none md:rounded-none w-full max-w-7xl flex flex-col md:flex-row items-center gap-0 sm:gap-10">
+          <div className="bg-white shadow-lg rounded-xl  md:shadow-none md:rounded-none w-full max-w-[1400px] flex flex-col  md:flex-row items-center gap-0 sm:gap-10">
             <div className="w-full md:w-1/2 flex justify-center">
               <img
                 src={PMS}
