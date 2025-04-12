@@ -17,7 +17,6 @@ const HomePage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Animation variants with responsive adjustments
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: (custom) => ({ 
@@ -80,7 +79,6 @@ const HomePage = () => {
     tap: { scale: 0.95 }
   };
 
-  // Custom hook for triggering animations when elements are in view
   const useAnimationOnScroll = () => {
     const controls = useAnimation();
     const [ref, inView] = useInView({
@@ -97,14 +95,14 @@ const HomePage = () => {
     return [ref, controls];
   };
   
-  // Create animation controls for each major section
+  
   const [heroRef, heroControls] = useAnimationOnScroll();
   const [aboutRef, aboutControls] = useAnimationOnScroll();
   const [featuresRef, featuresControls] = useAnimationOnScroll();
   const [pmsRef, pmsControls] = useAnimationOnScroll();
   
   return (
-    <div className="w-full mx-auto justify-center items-center 2xl:container">
+    <div className="w-full mx-auto justify-center items-center xxl:container">
       <Header/>
       
       {/* Hero Section*/}
@@ -417,7 +415,6 @@ const HomePage = () => {
           </div>
         </motion.div>
 
-        {/* View More Link */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}

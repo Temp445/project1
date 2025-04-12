@@ -25,7 +25,7 @@ const Footer = () => {
               Industrial Estate Ekkaduthangal, Chennai - 600032
             </p>
             
-            {/* Social Media Icons */}
+            {/* Social Media*/}
             <div className="flex gap-4 mt-4">
               <a href="https://www.facebook.com/people/Ace-Software-Solutions-Pvt-Ltd/61565550617223/" target="_blank" rel="noopener noreferrer" className="w-6 h-6 md:w-7 md:h-7">
                 <img src={facebook} alt="facebook" className="w-full h-full object-contain" />

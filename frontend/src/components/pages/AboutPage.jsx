@@ -60,7 +60,7 @@ const AboutPage = () => {
     
     <div>
       <Header/>
-       <div className="2xl:container w-full mx-auto">
+       <div className="xxl:container w-full mx-auto">
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

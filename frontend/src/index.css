@@ -18,10 +18,5 @@
 }
 
 @theme {
-  /* --breakpoint-xxxl: 1290px; */
-  /* --breakpoint-xml: 90rem;
-
-  --breakpoint-xxl: 1420px;
-  --breakpoint-5xl: 2560px; */
-
+  --breakpoint-xxl: 2020px;
 }
