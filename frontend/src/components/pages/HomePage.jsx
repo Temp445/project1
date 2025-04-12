@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../layouts/Header";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import CMS from "../../assets/Images/CMS1.png";
@@ -9,89 +9,226 @@ import Animation2 from "../../assets/gif/Landingimg.mp4";
 import Aboutmp4 from "../../assets/gif/About.mp4";
 import Count from "../layouts/Count";
 import { Link } from "react-router-dom";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 const HomePage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Animation variants with responsive adjustments
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (custom) => ({ 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        duration: 0.6, 
+        delay: custom * 0.1 || 0 
+      }
+    })
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.05
+      }
+    }
+  };
+
+  const slideIn = (direction = "left") => ({
+    hidden: { 
+      x: direction === "left" ? -60 : direction === "right" ? 60 : 0,
+      y: direction === "up" ? 60 : direction === "down" ? -60 : 0,
+      opacity: 0 
+    },
+    visible: { 
+      x: 0, 
+      y: 0,
+      opacity: 1,
+      transition: { 
+        duration: 0.7, 
+        ease: "easeOut" 
+      }
+    }
+  });
+
+  const scaleUp = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: { 
+      scale: 1, 
+      opacity: 1,
+      transition: { 
+        duration: 0.5,
+        type: "spring",
+        stiffness: 100
+      }
+    }
+  };
+
+  const buttonHover = {
+    initial: { scale: 1 },
+    hover: { 
+      scale: 1.05,
+      transition: { type: "spring", stiffness: 400, damping: 10 }
+    },
+    tap: { scale: 0.95 }
+  };
+
+  // Custom hook for triggering animations when elements are in view
+  const useAnimationOnScroll = () => {
+    const controls = useAnimation();
+    const [ref, inView] = useInView({
+      threshold: 0.2,
+      triggerOnce: true
+    });
+
+    useEffect(() => {
+      if (inView) {
+        controls.start("visible");
+      }
+    }, [controls, inView]);
+
+    return [ref, controls];
+  };
+  
+  // Create animation controls for each major section
+  const [heroRef, heroControls] = useAnimationOnScroll();
+  const [aboutRef, aboutControls] = useAnimationOnScroll();
+  const [featuresRef, featuresControls] = useAnimationOnScroll();
+  const [pmsRef, pmsControls] = useAnimationOnScroll();
   
   return (
     <div className="w-full mx-auto justify-center items-center 2xl:container">
-    <Header/>
-      <section className="flex flex-col-reverse lg:flex-row items-center justify-between  px-6 sm:px-10 md:px-10 lg:pl-15  py-10 bg-[#FFF5F5]">
-        <div className=" 3xl:justify-center 3xl:ml-100 2xl:ml-0 @desktop:ml-20 container  ">
-          <div className="container flex w-full  xl:ml-10">
-            <div className="text lg:text-left max-w-lg xl:ml-12 flex flex-col items lg:items-start">
-              <h1 className=" text-xl mb-5 sm:text-2xl sm:mt-10 xl:text-5xl font-bold text-[#F7666F] overflow-hidden xl:h-30">
-                Great Product is built <br />
-                <span className="text-[#403D3D] ml-0">by great teams</span>
-              </h1>
-
-              <video
-                className="h-50 w-60  mx-auto flex overflow-hidden object justify-center items-center sm:hidden "
-                preload="auto"
-                autoPlay
-                loop
-                muted
-                playsinline
-              >
-                <source src={Animation2} type="video/mp4" />
-              </video>
-
-              <p className=" font-normal  mt-5 w-full text-wrap text-justify text-[12px] lg:text-[14px] lg:leading-6 lg:mt-5 sm:w-70 lg:w-90 xl:w-full xl:text-[18px] xl:text-start xl:text-gray-600 xl:leading-7 ">
-                Optimize your business with advanced ERP solutions, Industry 4.0
-                innovations, and cloud-based management systems. From automotive
-                and aerospace to manufacturing and trading, we deliver smart,
-                scalable, and secure software tailored to your industry’s needs.
-              </p>
-              
-             <Link to="/contact" className="flex items-center justify-start self-start mt-5 px-0 py-2 gap-3 text-sm text-[#F7666F] font-bold transition-all  lg:mt-10 lg:text-lg xl:mt-20  xl:font-bold">
-                Contact Us{" "}
-                <BiSolidRightArrowSquare className="text-[20px] lg:text-xl" />
-             </Link>
-            </div>
-
-            <div className="flex justify-center md:ml-20  md:w-80 lg:w-110 xl:w-120 xl:h-120 xl:ml-30  ">
-              <video
-                className="hidden sm:block lg:w-100  xl:w-130 xl:-mt-15 pb-10 "
-                preload="auto"
-                autoPlay
-                loop
-                muted
-                playsinline
-              >
-                <source src={Animation2} type="video/mp4" />
-              </video>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* AboutSection*/}
-      <div className="bg-white p-8 xl:pe-20 lg:h-120">
-        <div className="grid md:grid-cols-2  items-center container gap-10 xl:gap-0">
-          <video
-            className="hidden   sm:block h-80 w-100  lg:mt-10 lg:w-200 "
-            preload="auto"
-            autoPlay
-            loop
-            muted
-            playsinline
+      <Header/>
+      
+      {/* Hero Section*/}
+      <motion.section 
+        ref={heroRef}
+        initial="hidden"
+        animate={heroControls}
+        className="flex flex-col-reverse lg:flex-row items-center justify-between px-4 sm:px-6 md:px-8 lg:px-12 py-0 sm:py-10 bg-[#FFF5F5]"
+      >
+        <div className="w-full lg:w-1/2 xl:px-6">
+          <motion.div 
+            variants={staggerContainer}
+            className="flex flex-col  lg:items-start"
           >
-            <source src={Aboutmp4} type="video/mp4" />
-          </video>
-          <div>
-            <h2 className="mb-0 text-xl ml-0 font-bold text-black  inline-block md:mb-6 lg:mb-10 lg:text-3xl overflow-hidden ">
-              Who We Are
-            </h2>
-            <video
-              className="w-50 h-50 flex items-center justify-center sm:hidden  mx-auto"
+            <motion.h1 
+              variants={fadeIn}
+              custom={0}
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#F7666F] text-left lg:text-left mb-4 sm:mb-6 lg:h-28 overflow-hidden"
+            >
+              Great Product is built <br className="hidden sm:block" />
+              <span className="text-[#403D3D]">by great teams</span>
+            </motion.h1>
+
+            <motion.video
+              variants={scaleUp}
+              className="h-auto justify-center mx-auto w-4/5 sm:w-3/5 max-w-xs my-4 sm:hidden"
               preload="auto"
               autoPlay
               loop
               muted
-              playsinline
+              playsInline >
+              <source src={Animation2} type="video/mp4" />
+            </motion.video>
+
+            <motion.p 
+              variants={fadeIn}
+              custom={1}
+              className="font-normal w-full text-justify lg:text-left text-xs sm:text-sm md:text-base lg:text-base xl:text-lg text-gray-700 xl:text-gray-600 my-4 sm:my-6"
             >
+              Optimize your business with advanced ERP solutions, Industry 4.0
+              innovations, and cloud-based management systems. From automotive
+              and aerospace to manufacturing and trading, we deliver smart,
+              scalable, and secure software tailored to your industry's needs.
+            </motion.p>
+            
+            <motion.div
+              variants={fadeIn}
+              custom={2}
+              initial="initial"
+              whileHover="hover"
+              whileTap="tap"
+              className="self-start"
+            >
+              <Link to="/contact" className="flex items-start mt-1 mb-2 sm:mt-4 lg:mt-6 xl:mt-8  py-2 gap-2 text-sm md:text-bold lg:font-extrabold xl:text-2xl text-[#F7666F] font-bold transition-all">
+                Contact Us{" "}
+                <BiSolidRightArrowSquare className=" md:mt-1 text-lg md:text-xl lg:text-2xl" />
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        <motion.div 
+          variants={slideIn("right")}
+          initial="hidden"
+          animate={heroControls}
+          className="w-full lg:w-1/2 flex justify-center items-center mb-6 lg:mb-0"
+        >
+          <video
+            className="hidden sm:block w-4/5 md:w-full lg:w-11/12 xl:w-10/12 h-auto"
+            preload="auto"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src={Animation2} type="video/mp4" />
+          </video>
+        </motion.div>
+      </motion.section>
+
+      {/* About Section */}
+      <motion.div 
+        ref={aboutRef}
+        initial="hidden"
+        animate={aboutControls}
+        className="bg-white px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12"
+      >
+        <div className="grid md:grid-cols-2 items-center container gap-6 md:gap-8 lg:gap-10">
+          <motion.video
+            variants={slideIn("left")}
+            className="hidden sm:block w-11/12 md:w-full xl:w-[550px] h-auto mx-auto"
+            preload="auto"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src={Aboutmp4} type="video/mp4" />
+          </motion.video>
+          
+          <motion.div variants={staggerContainer}>
+            <motion.h2 
+              variants={fadeIn}
+              custom={0}
+              className="text-xl sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-black text-center md:text-left mb-4" >
+              Who We Are
+            </motion.h2>
+            
+            <motion.video
+              variants={scaleUp}
+              className="w-4/5 sm:w-3/5 h-auto mx-auto my-4 sm:hidden"
+              preload="auto"
+              autoPlay
+              loop
+              muted
+              playsInline >
               <source src={Aboutmp4} type="video/mp4" />
-            </video>
-            <p className="mt-0 text w-full  text-[12px] text-wrap text-justify lg:text-sm  xl:leading-7  xl:text-[18px] xl:text-gray-600 ">
-              <span className=" text-[#F7666F]">
+            </motion.video>
+            
+            <motion.p 
+              variants={fadeIn}
+              custom={1}
+              className="w-full text-[12px] sm:text-sm md:text-base lg:text-base xl:text-lg text-justify md:text-left text-gray-700 xl:text-gray-600" >
+              <span className="text-[#F7666F]">
                 ACE Software Solutions Pvt. Ltd;
               </span>{" "}
               a company incorporated in 2001, has its Head Office and its
@@ -101,126 +238,210 @@ const HomePage = () => {
               designing and implementation of ERP systems, Industry 4.0 & IIOT
               Solutions and SAAS model products for small, medium and large
               industries and corporate.
-            </p>
+            </motion.p>
 
-           <Link to="/about"
-              className="mt-5 gap-2  text-[#F7666F] font-semibold text-[12px] text-sm flex lg:mt-10 xl:text-[16px]" >
-              Read more{" "}
-              <span>
-                <FaArrowAltCircleRight className="mt-1 " />
-              </span>
-           </Link>
-          </div>
+            <motion.div
+              variants={fadeIn}
+              custom={2}
+              initial="initial"
+              whileHover="hover"
+              whileTap="tap"
+              className="flex justify-start"
+            >
+              <Link to="/about" className="mt-4 sm:mt-6 gap-2 text-[#F7666F] font-semibold text-sm sm:text-sm md:text-base flex items-center">
+                Read more{" "}
+                <span>
+                  <FaArrowAltCircleRight className="mt-0.5" />
+                </span>
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
-      <div>
-        {" "}
-        <Count />{" "}
-      </div>
+      {/* Counter Section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <Count />
+      </motion.div>
 
-      {/* ProductSection */}
-      <div className="xl:ml-10 2xl:ml-0">
-        <div className="container xl:ml-10 lg:px-5">
-          <h1 className="mx-auto flex w-full justify-center mt-7 text-xl font-bold xl:text-2xl xl:mt-15 xl:mb-10">
+      {/* Features Section*/}
+      <motion.div 
+        ref={featuresRef}
+        initial="hidden"
+        animate={featuresControls}
+        className="px-4 sm:px-6 md:px-8 lg:px-12 py-8"
+      >
+        <div className="container mx-auto">
+          <motion.h1 
+            variants={fadeIn}
+            className="text-center text-xl  sm:text-xl md:text-2xl lg:text-2xl font-bold mb-6 sm:mb-8 lg:mb-10"
+          >
             Our Features
-          </h1>
-          <div className="flex">
-            <div className="items-center space-x-8 p-5 md:mt-8 flex justify-center w-full overflow-hidden xl:ml-10">
-              <div className="bg-white shadow-lg rounded-xl p-6 md:shadow-none md:rounded-none w-full max-w-7xl">
-                <h2 className="hidden font-bold text-sm md:text-lg sm:block xl:text-[21px]">
-                  ACE CMS
-                </h2>
-                <div className="w-full container md:flex">
-                  <div className="w-full justify-center mt-1 sm:w-100 mx-auto md:hidden">
-                    <img
-                      src={CMS}
-                      alt="ACE CMS Illustration"
-                      className="sm:w-full rounded-md"
-                    />
-                  </div>
-                  <h2 className="font-bold text-sm md:text-lg sm:hidden xl:text-[21px]">
-                    ACE CMS
-                  </h2>
-                  <p className="mt-2 w-full text-wrap text-[12px] sm:text-[13px] text-justify text-gray-700 md:order-2 md:w-90 md:mt-6 lg:text-start lg:text-[14px] lg:w-120 xl:w-160 xl:text-[18px]">
-                    <span className="text-[#F7666F] font-semibold">
-                      ACE Calibration Management System
-                    </span>{" "}
-                    <span className="xl:text-gray-600">
-                      on Cloud – a comprehensive, efficient and user-friendly
-                      Calibration Management System helps to manage your Gauges
-                      & Instruments calibration needs.
-                    </span>
-                    <span className="hidden sm:block mt-3 md:flex gap-3 xl:text-gray-600">
-                      Calibration of gauges and instruments is one of the vital
-                      processes for any manufacturing industry to produce a
-                      quality and reliable product to satisfy customer needs.
-                    </span>
-                  </p>
-                </div>
+          </motion.h1>
+          
+          {/* CMS Feature */}
+          <div className="flex flex-col-reverse md:flex-row items-center justify-between mb-10 sm:mb-16 lg:mb-0 xl:ml-10">
+            <motion.div 
+              variants={staggerContainer}
+              className="w-full md:w-1/2 bg-white rounded-xl p-4 sm:p-6" >
+              <motion.h2 
+                variants={fadeIn}
+                custom={0}
+                className=" hidden sm:block font-bold text-base sm:text-lg lg:text-xl xl:text-2xl text-center md:text-left mb-3" >
+                ACE CMS
+              </motion.h2>
+              
+              <motion.div 
+                variants={scaleUp}
+                className="w-full  mx-auto md:hidden mb-4"
+              >
+                <img
+                  src={CMS}
+                  alt="ACE CMS Illustration"
+                  className="w-full rounded-md"
+                />
+              </motion.div>
+              
+              <motion.p 
+                variants={fadeIn}
+                custom={1}
+                className="text-[12px] sm:text-sm md:text-base xl:text-lg text-justify md:text-left text-gray-700 xl:text-gray-600"
+              >
+                <span className="text-[#F7666F] font-semibold">
+                  ACE Calibration Management System
+                </span>{" "}
+                on Cloud – a comprehensive, efficient and user-friendly
+                Calibration Management System helps to manage your Gauges
+                & Instruments calibration needs.
+                <span className="hidden sm:block mt-2">
+                  Calibration of gauges and instruments is one of the vital
+                  processes for any manufacturing industry to produce a
+                  quality and reliable product to satisfy customer needs.
+                </span>
+              </motion.p>
 
-                <Link to="/products" className="mt-3 gap-2 text-[12px] text-[#F7666F] font-semibold sm:text-sm flex lg:mt-10">
-                  Read more <FaArrowAltCircleRight className="mt-1" />
+              <motion.div
+                variants={fadeIn}
+                custom={2}
+                initial="initial"
+                whileHover="hover"
+                whileTap="tap"
+                className="flex justify-start"
+              >
+                <Link to="/products" className="mt-4 flex items-center gap-2 text-[12px] sm:text-sm text-[#F7666F] font-semibold">
+                  Read more <FaArrowAltCircleRight className="mt-0.5" />
                 </Link>
-
-              </div>
-            </div>
-            <div className="hidden justify-center mt-10 sm:block sm:mt-15 sm:w-90 mx-auto md:w-120 md:mr-5 lg:w-150 xl:mr-30 xl:w-220 xl:h-100 overflow-hidden">
+              </motion.div>
+            </motion.div>
+            
+            <motion.div 
+              variants={slideIn("right")}
+              className="hidden md:flex md:w-1/2 justify-center items-center"
+            >
               <img
                 src={CMS}
                 alt="ACE CMS Illustration"
-                className="rounded-md overflow-hidden"
+                className="w-4/5 lg:w-10/12 rounded-md"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
 
-        {/* PMS */}
-        <div className="container flex justify-center items-center  lg:px-5 px-6 mt-0 h-120 sm:h-auto">
-          <div className="bg-white shadow-lg rounded-xl  md:shadow-none md:rounded-none w-full max-w-[1400px] flex flex-col  md:flex-row items-center gap-0 sm:gap-10">
-            <div className="w-full md:w-1/2 flex justify-center">
+        {/* PMS Feature */}
+        <motion.div 
+          ref={pmsRef}
+          initial="hidden"
+          animate={pmsControls}
+          className="container mx-auto mb-6 sm:mb-10 xl:-ml-5"
+        >
+          <div className="flex flex-col md:flex-row items-center bg-white rounded-xl">
+            <motion.div 
+              variants={slideIn("left")}
+              className="w-full md:w-1/2 flex justify-center sm:p-4"
+            >
               <img
                 src={PMS}
                 alt="ACE PMS Illustration"
-                className="sm:w-full rounded-md"
+                className="w-4/5 md:w-10/12 xl:w-[800px] rounded-md"
               />
-            </div>
+            </motion.div>
 
-            <div className="w-full md:w-1/2 p-5">
-              <h2 className="font-bold text-sm md:text-lg xl:text-[21px]">
+            <motion.div 
+              variants={staggerContainer}
+              className="w-full md:w-1/2 p-4 sm:p-6"
+            >
+              <motion.h2 
+                variants={fadeIn}
+                custom={0}
+                className="hidden sm:block font-bold text-base sm:text-lg lg:text-xl xl:text-2xl text-center md:text-left mb-3"
+              >
                 ACE PMS
-              </h2>
+              </motion.h2>
 
-              <p className="mt-2 text-[12px] sm:text-[13px] text-justify text-gray-600 lg:text-[14px] xl:text-[18px] xl:mt-5 ">
+              <motion.p 
+                variants={fadeIn}
+                custom={1}
+                className="text-[12px] sm:text-sm md:text-base xl:text-lg text-justify md:text-left text-gray-700 xl:text-gray-600"
+              >
                 <span className="text-[#F7666F] font-semibold">
                   Ace Production Management System
                 </span>{" "}
                 assists in planning, producing, monitoring, and controlling,
                 including corrective actions of production activities in Real
-                Time / Onlineon the shop floor.{" "}
+                Time / Online on the shop floor.{" "}
                 <span className="hidden md:block mt-2">
                   The main objective of Ace Production Management System is to
                   produce good quality and right quantity product at the right
                   time cost effectively.
                 </span>
-              </p>
+              </motion.p>
 
-      
-              <Link to="/products" className="mt-3 text-[12px] text-[#F7666F] font-semibold sm:text-sm flex items-center gap-2 lg:mt-5 xl:mt-10">
-                Read more <FaArrowAltCircleRight className="mt-1 " />
-              </Link>
-
-            </div>
+              <motion.div
+                variants={fadeIn}
+                custom={2}
+                initial="initial"
+                whileHover="hover"
+                whileTap="tap"
+                className="flex justify-start"
+              >
+                <Link to="/products" className="mt-4 flex items-center gap-2 text-sm sm:text-sm text-[#F7666F] font-semibold">
+                  Read more <FaArrowAltCircleRight className="mt-0.5" />
+                </Link>
+              </motion.div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
+        {/* View More Link */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="flex justify-center"
+        >
+          <Link to="/products" className="gap-2 text-base sm:text-base underline text-[#F7666F] flex items-center font-semibold mt-0 sm:mt-4">
+            View more
+          </Link>
+        </motion.div>
+      </motion.div>
 
-       <Link  to="/products" className="w-full text-center gap-2 text-[14px] underline text-[#F7666F] flex items-center font-semibold sm:text-sm justify-center sm:mt-5 xl:text-[16px]">
-          View more
-        </Link>
-      </div>
-
-      <ClientCarousel />
+      {/* Client Carousel */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <ClientCarousel />
+      </motion.div>
     </div>
   );
 };

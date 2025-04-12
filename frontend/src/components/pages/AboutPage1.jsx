@@ -246,7 +246,7 @@ const AboutPage1 = () => {
           img: Pic5,
           position: "Technical Head of ACE Software Solutions Pvt. Ltd",
           description:
-            "with over 15 years’ experience is the architect for ACE Profit ERP Solutions.",
+          "With 20+ years of expertise, the lead architect designs scalable and secure ERP systems for ACE Profit, optimizing processes, enhancing efficiency, and driving business growth.",
         },
       ].map((leader, index) => (
         <div

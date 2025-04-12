@@ -81,7 +81,7 @@ const AboutPage = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
-          className="relative z-10 flex flex-col items-center justify-center h-full text-white px-6 text-center xl:text-start xl:items-start xl:ml-100 xl:justify-start xl:mt-30 "
+          className="relative z-10 flex flex-col items-center justify-center h-full text-white px-6 text-center xl:text-start xl:items-start xl:ml-100 xml:ml-70 xl:justify-start xl:mt-30 "
         >
           <h1 className="text-lg md:text-3xl font-semibold relative inline-block mb-4 overflow-hidden after:content-[''] after:block after:w-16 xl:after:w-29 after:h-[2px] after:bg-white after:rounded after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0">
             About Us
@@ -272,7 +272,7 @@ const AboutPage = () => {
           img: Pic5,
           position: "Technical Head of ACE Software Solutions Pvt. Ltd",
           description:
-            "With 15+ years of expertise, the lead architect designs scalable and secure ERP systems for ACE Profit, optimizing processes, enhancing efficiency, and driving business growth.",
+            "With 20+ years of expertise, the lead architect designs scalable and secure ERP systems for ACE Profit, optimizing processes, enhancing efficiency, and driving business growth.",
         },
       ].map((leader, index) => (
         <div
