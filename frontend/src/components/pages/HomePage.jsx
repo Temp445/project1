@@ -122,13 +122,13 @@ const HomePage = () => {
               custom={0}
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#F7666F] text-left lg:text-left mb-4 sm:mb-6 lg:h-28 overflow-hidden"
             >
-              Great Product is built <br className="hidden sm:block" />
+              Great Product is built <br className="hidden lg:block" />
               <span className="text-[#403D3D]">by great teams</span>
             </motion.h1>
 
             <motion.video
               variants={scaleUp}
-              className="h-auto justify-center mx-auto w-4/5 sm:w-3/5 max-w-xs my-4 sm:hidden"
+              className="h-auto justify-center mx-auto w-4/5 sm:w-3/5 max-w-xs my-4 lg:hidden"
               preload="auto"
               autoPlay
               loop
@@ -156,7 +156,7 @@ const HomePage = () => {
               whileTap="tap"
               className="self-start"
             >
-              <Link to="/contact" className="flex items-start mt-1 mb-2 sm:mt-4 lg:mt-6 xl:mt-8  py-2 gap-2 text-sm md:text-bold lg:font-extrabold xl:text-2xl text-[#F7666F] font-bold transition-all">
+              <Link to="/contact" className="flex items-start mt-1 mb-2 sm:mt-4 lg:mt-6 xl:mt-8  py-2 gap-2 text-sm md:text-lg md:text-bold lg:font-extrabold xl:text-2xl text-[#F7666F] font-bold transition-all">
                 Contact Us{" "}
                 <BiSolidRightArrowSquare className=" md:mt-1 text-lg md:text-xl lg:text-2xl" />
               </Link>
@@ -171,7 +171,7 @@ const HomePage = () => {
           className="w-full lg:w-1/2 flex justify-center items-center mb-6 lg:mb-0"
         >
           <video
-            className="hidden sm:block w-4/5 md:w-full lg:w-11/12 xl:w-10/12 h-auto"
+            className="hidden lg:block w-4/5 md:w-full lg:w-11/12 xl:w-10/12 h-auto"
             preload="auto"
             autoPlay
             loop

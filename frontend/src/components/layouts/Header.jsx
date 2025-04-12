@@ -25,7 +25,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <Link to="/">  <div className=" flex flex-1 md:items-center lg:justify-start gap-1">
             <img src={Logo} alt="Company Logo" className="h-10 pl-2 xl:h-10" />
-           <span className=" mt-3  flex text-sm sm:text-base md:mt-1  font-semibold md:font-normal md:text-lg xl:font-semibold">ACE <span className='md:hidden'>.in</span> <span className='hidden ml-2 md:block'>Software Solutions Pvt. Ltd</span></span>
+           <span className=" mt-3  flex text-sm sm:text-base md:mt-1  font-semibold md:font-normal md:text-lg xl:font-semibold">ACE <span className='lg:hidden'>.in</span> <span className='hidden ml-2 lg:block'>Software Solutions Pvt. Ltd</span></span>
           </div>
           </Link> 
           <Link to="/contact" className='lg:hidden font-bold text-[12px] px-1 rounded bg-black text-white py-1 items-center ml-32 sm:ml-70'>Book A Demo</Link>
