@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from 'react';
 import { motion } from "framer-motion";
 import People_Business from "../../assets/gif/People_Business.mp4";
 import { FaUser } from "react-icons/fa6";
@@ -20,6 +21,7 @@ import { FaUserTie } from "react-icons/fa6";
 
 import Count from "../layouts/Count";
 import Header from "../layouts/Header";
+
 
 const AboutPage = () => {
 
@@ -55,6 +57,10 @@ const AboutPage = () => {
       }
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, []);
 
   return (
     

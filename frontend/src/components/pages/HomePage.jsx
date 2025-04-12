@@ -355,7 +355,7 @@ const HomePage = () => {
           ref={pmsRef}
           initial="hidden"
           animate={pmsControls}
-          className="container mx-auto mb-6 sm:mb-10 xl:-ml-5"
+          className="container mx-auto mb-6 sm:mb-0 xl:-ml-5"
         >
           <div className="flex flex-col md:flex-row items-center bg-white rounded-xl">
             <motion.div 
@@ -424,12 +424,13 @@ const HomePage = () => {
           whileTap={{ scale: 0.95 }}
           className="flex justify-center"
         >
-          <Link to="/products" className="gap-2 text-base sm:text-base underline text-[#F7666F] flex items-center font-semibold mt-0 sm:mt-4">
-            View more
+          <Link to="/products" className="gap-2 text-base sm:text-base underline text-[#F7666F] flex items-center font-semibold mt-0 sm:mt-0">
+          View all our products
           </Link>
         </motion.div>
       </motion.div>
 
+     
       {/* Client Carousel */}
       <motion.div
         initial={{ opacity: 0 }}

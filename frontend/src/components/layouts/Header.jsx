@@ -5,10 +5,11 @@ import Logo from '../../assets/Images/AceLogo.png'
 import { Link } from 'react-router-dom';
 
 const navigation = [
-  { name: 'About us', href: '/about', },
   { name: 'Products', href: '/products'},
   { name: 'Product Enquiry', href: '/ProductEnquire' },
   { name: 'Contact Us', href: '/contact' },
+  { name: 'About us', href: '/about', },
+
   // { name: 'Dashboard', href: '/admin' },
 ]
 
@@ -45,8 +46,8 @@ export default function Header() {
                   key={item.name}
                   to={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : ' hover:bg-gray-900 hover:text-white',
-                    'rounded-md px-2 py-2 text-12 md:text-lg font-semibold'
+                    item.current ? 'bg-gray-900 text-black' : 'hover-effect-1  hover:text-white  cursor-pointer ',
+                    'rounded-md px-2 py-2 text-12 md:text-base font-semibold'
                   )}
                 >
                   {item.name}

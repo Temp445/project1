@@ -25,6 +25,10 @@ const ProductDetails = () => {
   const [showNavbar, setshowNavbar] = useState(true);
   const [showAbout, setShowAbout] = useState(false);
 
+    useEffect(() => {
+      window.scrollTo(0, 0); 
+    }, []);
+
  
   useEffect(() => {
     fetchProduct();

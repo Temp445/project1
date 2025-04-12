@@ -19,7 +19,10 @@ const ProductsPage = () => {
 
   useEffect(() => {
     fetchProducts();
+    window.scrollTo(0, 0); 
+
   }, []);
+
 
   const fetchProducts = async () => {
     try {

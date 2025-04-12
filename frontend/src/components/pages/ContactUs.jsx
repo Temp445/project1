@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { MdAddIcCall, MdOutlineMail } from "react-icons/md";
 import { FaLaptopCode } from "react-icons/fa";
 import { RiCustomerService2Fill } from "react-icons/ri";
@@ -13,6 +13,11 @@ const ContactUs = () => {
   const form = useRef();
   const [emailError, setEmailError] = useState("");
   const [loading, setLoading] = useState(false);
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, []);
 
   const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]{2,6}\.[a-zA-Z]{2,6}$/;
 

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import Header from "../layouts/Header";
 
@@ -7,6 +7,11 @@ export default function ProductEnquire() {
   const [checkboxError, setCheckboxError] = useState(false);
   const [formErrors, setFormErrors] = useState({});
   const form = useRef();
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, []);
 
   // Email validation
   const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -84,8 +89,8 @@ export default function ProductEnquire() {
   return (
     <div>
       <Header/>
-      <div className="min-h-screen py-12 px-4">
-      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-8 border border-gray-200">
+      <div className="min-h-screen py-12 px-2 sm:px-4">
+      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-4 sm:p-8 border border-gray-200">
         <h1 className="md:text-3xl font-semibold text-center mb-6">
           Product Enquiry
         </h1>
@@ -189,18 +194,18 @@ export default function ProductEnquire() {
             </label>
             <div className="grid md:grid-cols-2 gap-4 mt-2">
               {[
-                "Aceprofit Compact ERP",
-                "APQP",
-                "CRM",
-                "Daily Work Tracker",
-                "Document Management",
+                "ACE CRM",
+                "ACE Profit PPAP",
+                "PPAP Manager",
+                "ACE Profit ERP",
+                "ACE Profit HRMS",
+                "ACE Projects",
                 "Engineering Balloon Annotator",
-                "Part Codification",
-                "PPAP Management",
-                "Project Management",
-                "React Component Playground",
-                "Sales",
-                "VB6 to React Component",
+                "Engineering Balloon Annotator",
+                "ACE Fixed Asset Management (FAM)",
+                "ACE Calibration Management System (CMS)",
+                "ACE Production Management System (PMS)",
+                "ACE Task Management System (TMS)",
               ].map((product) => (
                 <label key={product} className="flex items-center space-x-2">
                   <input
